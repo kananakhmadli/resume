@@ -1,0 +1,11 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‰§®¢
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ã¯üºÿÿÿÿÿ
+]	java:S125"<This block of commented-out lines of code should be removed.( óž„ÿÿÿÿÿ8¢°ìÓ/
+]	java:S125"<This block of commented-out lines of code should be removed.(Ó¨Ñþÿÿÿÿ8¤°ìÓ/
+o
+java:S3012."YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(Ð–•Õ
+t
+java:S30127"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ÙÝôùÿÿÿÿÿ
+N
+java:S1068",Remove this unused "fileName" private field.(ã¯üºÿÿÿÿÿ8¥°ìÓ/

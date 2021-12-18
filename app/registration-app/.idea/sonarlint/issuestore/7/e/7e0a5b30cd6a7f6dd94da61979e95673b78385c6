@@ -1,0 +1,12 @@
+
+—
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ç‡å’
+U
+java:S1118":Add a private constructor to hide the implicit public one.(ë¤‡íúÿÿÿÿ
+N	java:S106
+"9Replace this use of System.out or System.err by a logger.(›æŒÁ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(›æŒÁ
+y
+java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "answer".(ëà•øùÿÿÿÿ
+y
+java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "answer".(Ñ½¹Õùÿÿÿÿ

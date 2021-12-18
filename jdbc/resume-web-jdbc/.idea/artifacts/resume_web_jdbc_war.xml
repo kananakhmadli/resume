@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="resume-web-jdbc:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>resume-web-jdbc</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="resume-web-jdbc-0.1.war">
+      <element id="artifact" artifact-name="resume-web-jdbc:war exploded" />
+    </root>
+  </artifact>
+</component>

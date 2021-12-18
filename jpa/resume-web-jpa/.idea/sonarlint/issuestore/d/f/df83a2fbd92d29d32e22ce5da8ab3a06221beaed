@@ -1,0 +1,14 @@
+
+Q
+java:S1117";Rename "userDao" which hides the field declared at line 17.(¸¿ª³
+h
+java:S1989'"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ÃÊ«I
+T
+java:S2130/"9Use "Integer.parseInt" for this string-to-int conversion.(“¨ûœşÿÿÿÿ
+s
+java:S1989/"XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(“¨ûœşÿÿÿÿ
+N	java:S1061"9Replace this use of System.out or System.err by a logger.(·Š´
+n
+java:S1989?"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¤Òß‹ùÿÿÿÿ
+n
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ñú¡ï
