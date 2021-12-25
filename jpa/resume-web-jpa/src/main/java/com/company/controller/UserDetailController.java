@@ -18,19 +18,17 @@ public class UserDetailController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try {
             String userIdStr = request.getParameter("id");
             if (userIdStr == null || userIdStr.trim().isEmpty()) {
                 throw new IllegalArgumentException("id is not defined");
 
             }
-            Integer userId = Integer.parseInt(userIdStr);
+            int userId = Integer.parseInt(userIdStr);
             UserDaoInter userDao = Context.instanceUserDao();
             User u = userDao.getById(userId);
             if (u == null) {
                 throw new IllegalArgumentException("there is no user id");
-
             }
             request.setAttribute("user", u);
             request.getRequestDispatcher("userdetail.jsp").forward(request, response);
@@ -38,7 +36,6 @@ public class UserDetailController extends HttpServlet {
             e.printStackTrace();
             response.sendRedirect("error?msg=" + e.getMessage());
         }
-
     }
 
     @Override
@@ -58,7 +55,6 @@ public class UserDetailController extends HttpServlet {
             userDao.updateUser(user);
         } else if (action.equals("delete")) {
             userDao.removeUser(id);
-
         }
         response.sendRedirect("users");
 

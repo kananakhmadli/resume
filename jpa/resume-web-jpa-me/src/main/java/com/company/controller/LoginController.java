@@ -1,25 +1,23 @@
 package com.company.controller;
 
+import com.company.Context;
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.User;
-import com.company.Context;
 import com.company.util.ControllerUtil;
 
-import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet(name = "LoginController", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.getRequestDispatcher("login.jsp").forward(request, response);
-
     }
 
     @Override
@@ -38,7 +36,5 @@ public class LoginController extends HttpServlet {
             
             ControllerUtil.errorPage(response, ex);
         }
-
     }
-
 }

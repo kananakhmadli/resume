@@ -1,9 +1,12 @@
 package com.company.util;
 
-import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class ControllerUtil {
+
+    private ControllerUtil() {
+    }
 
     public static void errorPage(HttpServletResponse res, Exception e) {
         try {

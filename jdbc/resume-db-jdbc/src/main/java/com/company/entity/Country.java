@@ -1,6 +1,10 @@
 package com.company.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -17,6 +21,5 @@ public class Country {
     public String toString() {
         return name + "(" + nationality + ")";
     }
-
 
 }

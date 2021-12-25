@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface UserSkillDaoInter {
 
-    public List<UserSkill> getAllSkillByUserId(int userId);
+    List<UserSkill> getAllSkillByUserId(int userId);
 
 }

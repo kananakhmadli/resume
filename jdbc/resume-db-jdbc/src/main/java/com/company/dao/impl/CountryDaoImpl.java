@@ -17,36 +17,28 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {//Co
         int id = rs.getInt("id");
         String name = rs.getString("name");
         String surname = rs.getString("nationality");
-
         return new Country(id, name, surname);
-
     }
 
     @Override
     public List<Country> getAll() {
         List<Country> list = new ArrayList<>();
-
         try (Connection c = connect()) {
-
             Statement stmt = c.createStatement();
             stmt.execute("select* from country");
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
                 Country con = getCountry(rs);
                 list.add(con);
-
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
         return list;
-
     }
 
     @Override
-    public boolean updatCountry(Country u) {
+    public boolean updateCountry(Country u) {
         try (Connection c = connect()) {
             PreparedStatement stmt = c.prepareStatement("update country set name=?,nationality=? where id=?");
             stmt.setString(1, u.getName());
@@ -70,7 +62,6 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {//Co
             ex.printStackTrace();
             return false;
         }
-
     }
 
     @Override
@@ -81,14 +72,11 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {//Co
             stmt.execute("select* from country where id=" + id);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-
                 con = getCountry(rs);
-
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return con;
     }
-
 }

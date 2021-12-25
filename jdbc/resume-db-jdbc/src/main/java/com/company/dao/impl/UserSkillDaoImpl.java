@@ -1,17 +1,18 @@
 package com.company.dao.impl;
 
+import com.company.dao.inter.AbstractDAO;
+import com.company.dao.inter.UserSkillDaoInter;
 import com.company.entity.Skill;
 import com.company.entity.User;
 import com.company.entity.UserSkill;
-import com.company.dao.inter.AbstractDAO;
-import com.company.dao.inter.UserSkillDaoInter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {//data access object
+public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
 
     private UserSkill getUserSkill(ResultSet rs) throws Exception {
         int userId = rs.getInt("id");
@@ -22,7 +23,7 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
     }
 
     @Override
-    public List<UserSkill> getAllSikillByUserId(int userId) {
+    public List<UserSkill> getAllSkillByUserId(int userId) {
         List<UserSkill> result = new ArrayList<>();
         try ( Connection c = connect()) {
             PreparedStatement stmt = c.prepareStatement(" SELECT\n"
@@ -43,7 +44,6 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
             while (rs.next()) {
                 UserSkill u = getUserSkill(rs);
                 result.add(u);
-
             }
 
         } catch (Exception ex) {
@@ -51,5 +51,4 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
         }
         return result;
     }
-
 }

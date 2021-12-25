@@ -1,20 +1,0 @@
-
-[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò»êª
-P
-java:S2479":Remove the non-escaped \u0009 character from this literal.(œº®…
-U
-java:S2479":Remove the non-escaped \u0009 character from this literal.(à¶®¸ıÿÿÿÿ
-U
-java:S2479":Remove the non-escaped \u0009 character from this literal.(¤—¤Ëüÿÿÿÿ
-P
-java:S2479 ":Remove the non-escaped \u0009 character from this literal.(¡» 
-U
-java:S2479"":Remove the non-escaped \u0009 character from this literal.(ßÍøÿÿÿÿ
-P
-java:S2479#":Remove the non-escaped \u0009 character from this literal.(×Ö¸—
-U
-java:S2479$":Remove the non-escaped \u0009 character from this literal.(À†¦øÿÿÿÿ
-U
-java:S2479&":Remove the non-escaped \u0009 character from this literal.(ÔÅŒéûÿÿÿÿ
-j
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¨Ïøùÿÿÿÿ

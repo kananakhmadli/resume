@@ -1,8 +1,0 @@
-
-[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(£îÚ—
-V
-java:S1610";Convert the abstract class "AbstractDAO" into an interface.(ëö…şÿÿÿÿ
-H
-java:S4925	"-Remove this "Class.forName()", it is useless.(¹µÖÁüÿÿÿÿ
-n
-java:S1488"YImmediately return this expression instead of assigning it to the temporary variable "c".(”û"

@@ -1,14 +1,14 @@
 package com.company.controller;
 
+import com.company.Context;
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.User;
-import com.company.Context;
-import java.io.IOException;
-import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet(name = "UserDetailController", urlPatterns = {"/userdetail"})
 public class UserDetailController extends HttpServlet {
@@ -17,7 +17,7 @@ public class UserDetailController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         int id = Integer.valueOf(request.getParameter("id"));
         String action = request.getParameter("action");
         System.out.println(action);
@@ -38,20 +38,18 @@ public class UserDetailController extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         try {
             String userIdStr = request.getParameter("id");
             if (userIdStr == null || userIdStr.trim().isEmpty()) {
                 throw new IllegalArgumentException("id is not defined");
-
             }
             Integer userId = Integer.parseInt(userIdStr);
             UserDaoInter userDao = Context.instanceUserDao();
             User u = userDao.getById(userId);
             if (u == null) {
                 throw new IllegalArgumentException("there is no user id");
-
             }
             request.setAttribute("user", u);
             request.getRequestDispatcher("userdetail.jsp").forward(request, response);

@@ -1,17 +1,18 @@
 package com.company.controller;
 
+import com.company.Context;
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.User;
-import com.company.Context;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet(name = "UserActionController", urlPatterns = {"/useraction"})
 public class UserActionController extends HttpServlet {
@@ -34,7 +35,6 @@ public class UserActionController extends HttpServlet {
         } else if (action.equals("add")) {
             request.getRequestDispatcher("addPage.jsp").forward(request, response);
         }
-
     }
 
     @Override
@@ -78,9 +78,6 @@ public class UserActionController extends HttpServlet {
             User u = new User(null, name, surname, email, phone, password);
             userDao.addUser(u);
             response.sendRedirect("users");
-
         }
-
     }
-
 }

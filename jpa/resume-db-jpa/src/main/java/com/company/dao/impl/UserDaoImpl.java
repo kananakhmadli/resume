@@ -4,11 +4,12 @@ import com.company.dao.inter.AbstractDAO;
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.User;
 
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
-public class UserDaoImpl extends AbstractDAO implements UserDaoInter {//data access object
+public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
+
     @Override
     public List<User> getAll(String name, String surname, Integer nationalityId) {
         EntityManager em = em();

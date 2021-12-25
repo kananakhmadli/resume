@@ -11,14 +11,11 @@ public abstract class AbstractDAO {
     public EntityManager em() {
         if (emf == null) {
             emf = Persistence.createEntityManagerFactory("pu");
-
         }
         return emf.createEntityManager();
-
     }
 
     public void closeEmf() {
-
         emf.close();
     }
 

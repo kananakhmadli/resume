@@ -1,7 +1,7 @@
 package com.company.util;
 
-import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class ControllerUtil {
 
@@ -14,5 +14,4 @@ public class ControllerUtil {
             ex.printStackTrace();
         }
     }
-
 }

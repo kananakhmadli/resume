@@ -5,12 +5,15 @@ import com.company.dao.inter.UserDaoInter;
 import com.company.entity.Country;
 import com.company.entity.User;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
-
 
     private User getUserSimp(ResultSet rs) throws Exception {
         int id = rs.getInt("id");
@@ -21,13 +24,10 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         String profileDesc = rs.getString("profile_desc");
         String address = rs.getString("address");
         Date birth_date = rs.getDate("birth_date");
-
         return new User(id, name, surname, phone, email, profileDesc, address, birth_date, null);
-
     }
 
     private User getUser(ResultSet rs) throws Exception {
-
         int nationalityId = rs.getInt("nationality_id");
         String nationlitStr = rs.getString("nationality");
         String city = rs.getString("city");
@@ -43,18 +43,14 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         List<User> list = new ArrayList<>();
         try (Connection c = connect()) {
             String sql = "SELECT u.*, c.nationality,c.name city FROM USER u LEFT JOIN country c ON u.nationality_id = c.id WHERE 1=1";
-
             if (name != null && !name.trim().isEmpty()) {
                 sql += " and u.name=?";
-
             }
             if (surname != null && !surname.trim().isEmpty()) {
                 sql += " and u.surname=?";
-
             }
             if (nationalityId != null) {
                 sql += " and u.nationality_id=?";
-
             }
             PreparedStatement stmt = c.prepareStatement(sql);
             int i = 1;
@@ -68,16 +64,13 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             }
             if (nationalityId != null) {
                 stmt.setInt(i, nationalityId);
-
             }
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
                 User u = getUser(rs);
                 list.add(u);
-
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -86,7 +79,6 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
 
     @Override
     public boolean updateUser(User u) {
-
         try (Connection c = connect()) {
             PreparedStatement stmt = c.prepareStatement("update user set name=?,surname=?,phone=?,email=?,profile_description=?,address=?,birthdate=? where id=?");
             stmt.setString(1, u.getName());
@@ -124,9 +116,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             stmt.execute(sql + userId);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-
                 con = getUser(rs);
-
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -160,13 +150,10 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 result = getUserSimp(rs);
-
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
-
 }

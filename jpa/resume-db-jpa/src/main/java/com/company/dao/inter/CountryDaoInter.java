@@ -6,12 +6,12 @@ import java.util.List;
 
 public interface CountryDaoInter {
 
-    public List<Country> getAll();
+    List<Country> getAll();
 
-    public Country getById(int id);
+    Country getById(int id);
 
-    public boolean updateCountry(Country c);
+    boolean updateCountry(Country c);
 
-    public boolean removeCountry(int id);
+    boolean removeCountry(int id);
 
 }

@@ -1,7 +1,7 @@
 package com.company.dao.impl;
 
 import com.company.dao.inter.AbstractDAO;
-import com.company.dao.inter.EnpoymentHistoryDoaInter;
+import com.company.dao.inter.EmploymentHistoryDoaInter;
 import com.company.entity.EmploymentHistory;
 import com.company.entity.User;
 
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpoymentHistoryDaoImpl extends AbstractDAO implements EnpoymentHistoryDoaInter {//data access object
+public class EmpoymentHistoryDaoImpl extends AbstractDAO implements EmploymentHistoryDoaInter {//data access object
 
     private EmploymentHistory getEmpolymentHistory(ResultSet rs) throws Exception {
         String header = rs.getString("header");

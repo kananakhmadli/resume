@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public abstract class AbstractDAO {
 
-    public  Connection connect() throws Exception { /// niye static olmadi
+    public Connection connect() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/resume";
         String username = "root";
@@ -13,5 +13,4 @@ public abstract class AbstractDAO {
         Connection c = DriverManager.getConnection(url, username, password);
         return c;
     }
-
 }

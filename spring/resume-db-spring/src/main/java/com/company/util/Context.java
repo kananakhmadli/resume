@@ -5,7 +5,7 @@ import com.company.dao.impl.EmpoymentHistoryDaoImpl;
 import com.company.dao.impl.UserDaoImpl;
 import com.company.dao.impl.UserSkillDaoImpl;
 import com.company.dao.inter.CountryDaoInter;
-import com.company.dao.inter.EnpoymentHistoryDoaInter;
+import com.company.dao.inter.EmploymentHistoryDoaInter;
 import com.company.dao.inter.UserDaoInter;
 import com.company.dao.inter.UserSkillDaoInter;
 
@@ -19,7 +19,7 @@ public class Context {
         return new UserSkillDaoImpl();
     }
 
-    public static EnpoymentHistoryDoaInter instanceEmploymentHistoryDao() {
+    public static EmploymentHistoryDoaInter instanceEmploymentHistoryDao() {
         return new EmpoymentHistoryDaoImpl();
     }
 
