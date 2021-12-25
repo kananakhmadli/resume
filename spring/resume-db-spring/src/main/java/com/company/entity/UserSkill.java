@@ -6,7 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Entity
@@ -18,6 +23,7 @@ import java.io.Serializable;
 public class UserSkill implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -29,7 +35,6 @@ public class UserSkill implements Serializable {
     @JoinColumn(name = "skill_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Skill skill;
-
     private int power;
 
     public UserSkill(User user, Skill skill, int power) {
@@ -42,4 +47,5 @@ public class UserSkill implements Serializable {
     public String toString() {
         return "com.company.entity.UserSkill[ id=" + id + " ]";
     }
+
 }

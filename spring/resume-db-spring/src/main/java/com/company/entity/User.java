@@ -24,18 +24,13 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name;
-
     private String surname;
-
     private String email;
-
     private String phone;
 
     @Lob
     private String profileDesc;
-
     private String address;
 
     @Temporal(TemporalType.DATE)
@@ -44,7 +39,6 @@ public class User implements Serializable {
     @JoinColumn(name = "nationality_id", referencedColumnName = "id")
     @ManyToOne()
     private Country nationality;
-
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -52,7 +46,6 @@ public class User implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<EmploymentHistory> employmentHistories;
-
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
 //    @Basic()

@@ -1,19 +1,11 @@
 package com.company;
 
-import com.company.dao.inter.UserRepository;
 import com.company.service.inter.UserServiceInter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import outer.MyConfiguration;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "outer")
@@ -94,6 +86,4 @@ public class Application {
 //        };
 //    }
 
-
 }
-

@@ -24,14 +24,13 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-//@Table(name = "kanan")
 public class EmploymentHistory implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String header;
 
     @Temporal(TemporalType.DATE)

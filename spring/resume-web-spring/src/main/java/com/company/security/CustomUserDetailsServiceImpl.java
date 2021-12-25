@@ -2,43 +2,47 @@ package com.company.security;
 
 import com.company.dao.inter.UserRepository;
 import com.company.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 
 import java.util.Arrays;
 
 @Service("userDetailsService")
+@Slf4j
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
         UserBuilder builder = null;
-        System.out.println(user);
+        log.info(String.valueOf(user));
         if (user != null) {
             builder = org.springframework.security.core.userdetails.User.withUsername(email);
             builder.disabled(false);
             builder.password(user.getPassword());
 
             String[] authorities = new String[user.getGroupUsers().size()];
-            for (int i = 0; i < user.getGroupUsers().size() ; i++) {
-                authorities[i]=user.getGroupUsers().get(i).getMyGroup().getName();
+            for (int i = 0; i < user.getGroupUsers().size(); i++) {
+                authorities[i] = user.getGroupUsers().get(i).getMyGroup().getName();
             }
-            System.out.println(Arrays.toString(authorities));
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++");
+
+            log.info(Arrays.toString(authorities));
+            log.info("++++++++++++++++++++++++++++++++++++++++++++++++");
 
             builder.authorities(authorities);
             return builder.build();
         } else {
             throw new UsernameNotFoundException("User not found");
         }
-
     }
 }

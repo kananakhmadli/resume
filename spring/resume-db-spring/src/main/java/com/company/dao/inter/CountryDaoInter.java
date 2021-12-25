@@ -1,13 +1,17 @@
 package com.company.dao.inter;
 
 import com.company.entity.Country;
+
 import java.util.List;
 
 public interface CountryDaoInter {
 
-    public List<Country> getAll();
-    public Country getById(int id);
-    public boolean updatCountry(Country c);
-    public boolean removeCountry(int id);
+    List<Country> getAll();
+
+    Country getById(int id);
+
+    boolean updatCountry(Country c);
+
+    boolean removeCountry(int id);
 
 }

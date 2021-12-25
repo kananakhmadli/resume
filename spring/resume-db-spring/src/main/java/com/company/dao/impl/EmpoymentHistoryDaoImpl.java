@@ -1,18 +1,16 @@
 package com.company.dao.impl;
 
 import com.company.dao.inter.AbstractDAO;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.company.dao.inter.EnpoymentHistoryDoaInter;
 import com.company.entity.EmploymentHistory;
 import com.company.entity.User;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpoymentHistoryDaoImpl extends AbstractDAO implements EnpoymentHistoryDoaInter {//data access object
 

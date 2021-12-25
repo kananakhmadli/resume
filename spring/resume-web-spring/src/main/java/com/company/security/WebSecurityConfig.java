@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     @Qualifier("userDetailsService")
     private UserDetailsService userDetailsService;
@@ -66,4 +67,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .csrf().disable();
     }
 }
-

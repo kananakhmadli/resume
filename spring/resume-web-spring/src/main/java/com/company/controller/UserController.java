@@ -1,12 +1,13 @@
 package com.company.controller;
 
-import com.company.entity.User;
 import com.company.dto.UserForm;
+import com.company.entity.User;
 import com.company.security.DummyService;
 import com.company.service.inter.UserServiceInter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,21 +18,27 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class UserController {
 
-    @Autowired
-    private UserServiceInter userServiceInter;
+    private final UserServiceInter userServiceInter;
+    private final DummyService dummyService;
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/users1")
-//    public String index(HttpServletRequest request) {
-//        String name = request.getParameter("name");
-//        String surname = request.getParameter("surname");
-//        List<User> list = userServiceInter.getAll(name, surname, null);
-//        request.setAttribute("list", list);
-//        return "usersJ";
-//    }
+    public UserController(UserServiceInter userServiceInter, DummyService dummyService) {
+        this.userServiceInter = userServiceInter;
+        this.dummyService = dummyService;
+    }
 
-    @RequestMapping(method = RequestMethod.GET, value = {"/users1", "/users2"})
+   /* @RequestMapping(method = RequestMethod.GET, value = "/users1")
+    public String index(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        List<User> list = userServiceInter.getAll(name, surname, null);
+        request.setAttribute("list", list);
+        return "usersJ";
+    }*/
+
+    @GetMapping(value = {"/users1", "/users2"})
     public ModelAndView index(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "surname", required = false) String surname) {
@@ -42,19 +49,18 @@ public class UserController {
         return view;
     }
 
+    /*@RequestMapping(method = RequestMethod.GET, value = "/users3")
+    public ModelAndView index3(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "surname", required = false) String surname) {
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/users3")
-//    public ModelAndView index3(
-//            @RequestParam(value = "name", required = false) String name,
-//            @RequestParam(value = "surname", required = false) String surname) {
-//
-//        List<User> list = userServiceInter.getAll(name, surname, null);
-//        ModelAndView view = new ModelAndView("users");
-//        view.addObject("list", list);
-//        return view;
-//    }
+        List<User> list = userServiceInter.getAll(name, surname, null);
+        ModelAndView view = new ModelAndView("users");
+        view.addObject("list", list);
+        return view;
+    }*/
 
-    @RequestMapping(method = RequestMethod.GET, value = "/usersm")
+    @GetMapping(value = "/usersm")
     public ModelAndView index4(@Valid @ModelAttribute("user") UserForm userForm, BindingResult bindingResult) {
         List<User> list = null;
         ModelAndView view = new ModelAndView("users");
@@ -68,30 +74,27 @@ public class UserController {
         return view;
     }
 
-    @Autowired
-    DummyService dummyService;
-
-    @RequestMapping(method = RequestMethod.GET, value = "/kanan")
+    @GetMapping(value = "/kanan")
     public String index5() {
-        System.out.println("kanan controller was called");
+        log.info("kanan controller was called");
         try {
             dummyService.foo();
-        }
-        catch (Exception e){
-            System.out.println("Admin kimi girmədiyinə görə error ");
+        } catch (Exception e) {
+            log.info("Admin kimi girmədiyinə görə error");
         }
         return "kanan";
     }
 
-    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/login")
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/login")
     public String login() {
         return "login";
     }
 
-    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/logout")
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/logout")
     public String logout() {
         return "logout";
     }
+
     @ModelAttribute("user")
     public UserForm getEmptyForm() {
         return new UserForm();

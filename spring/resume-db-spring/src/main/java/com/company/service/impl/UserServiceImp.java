@@ -1,7 +1,5 @@
 package com.company.service.impl;
 
-import java.util.List;
-
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.User;
 import com.company.service.inter.UserServiceInter;
@@ -9,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional

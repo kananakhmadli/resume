@@ -1,22 +1,23 @@
 package com.company.dao.inter;
 
 import com.company.entity.User;
+
 import java.util.List;
 
 public interface UserDaoInter {
 
-    public List<User> getAll(String name, String surname, Integer nationalityId);
+    List<User> getAll(String name, String surname, Integer nationalityId);
 
-    public User findByEmailAndPassword(String email, String password);
+    User findByEmailAndPassword(String email, String password);
 
-    public User findByEmail(String email);
+    User findByEmail(String email);
 
-    public User getById(int id);
+    User getById(int id);
 
-    public boolean updateUser(User u);
+    boolean updateUser(User u);
 
-    public boolean addUser(User u);
+    boolean addUser(User u);
 
-    public boolean removeUser(int id);
+    boolean removeUser(int id);
 
 }
