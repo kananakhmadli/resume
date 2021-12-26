@@ -16,7 +16,6 @@
     <body >
         <%
             List<User> list = (List<User>) request.getAttribute("userList");
-
         %>
         <div class="container mycontainer">
             <div class="row">
@@ -41,19 +40,17 @@
                         <th>Surname</th>
                         <th>Nationality</th>
                     </tr>
-
                 </thead>
                 <tbody>
-                    <%   for (User u : list) {
+                    <%
+                        for (User u : list) {
                     %>
                     <tr>
                         <td><%=u.getName()%></td>
                         <td><%=u.getSurname()%></td>
                         <td><%=u.getNationality().getName() == null ? "N/A" : u.getNationality().getName()%></td>
                         <td>
-
-                            <input type="submit" value="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="setIdForDelete(<%=u.getId()%>)"> 
-
+                            <input type="submit" value="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="setIdForDelete(<%=u.getId()%>)">
                         </td>
                         <td>
                             <form action="userdetail" method="GET">

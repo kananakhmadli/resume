@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserForm {
+public class UserDto {
 
     @Size(min = 3, message = "not less than 3")
     private String name;

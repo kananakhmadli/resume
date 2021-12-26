@@ -9,9 +9,7 @@
     <body>
 
         <%
-
             User u = (User) request.getAttribute("user");
-
         %>
         <div>
             <form action="userdetail" method="POST">
@@ -24,8 +22,6 @@
                 <input type="text" name="surname" value="<%=u.getSurname()%>">
                 <input type="submit" name="save" value="Save">
             </form>
-
         </div>
-
     </body>
 </html>

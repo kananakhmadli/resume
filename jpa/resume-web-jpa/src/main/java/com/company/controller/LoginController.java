@@ -16,12 +16,13 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         UserDaoInter userDao = Context.instanceUserDao();
         try {
             String email = request.getParameter("email");
@@ -33,7 +34,6 @@ public class LoginController extends HttpServlet {
             request.getSession().setAttribute("loggedInUser", user);
             response.sendRedirect("users");
         } catch (IOException | IllegalArgumentException ex) {
-
             ControllerUtil.errorPage(response, ex);
         }
     }

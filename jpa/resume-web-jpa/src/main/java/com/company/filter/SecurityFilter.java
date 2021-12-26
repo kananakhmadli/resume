@@ -15,8 +15,7 @@ import java.io.IOException;
 public class SecurityFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain)
-            throws ServletException {
+                         FilterChain chain) {
         try {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
@@ -31,7 +30,7 @@ public class SecurityFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override

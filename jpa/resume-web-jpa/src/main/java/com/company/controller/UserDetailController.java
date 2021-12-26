@@ -4,7 +4,6 @@ import com.company.Context;
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.User;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +16,12 @@ public class UserDetailController extends HttpServlet {
     private UserDaoInter userDao = Context.instanceUserDao();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         try {
             String userIdStr = request.getParameter("id");
             if (userIdStr == null || userIdStr.trim().isEmpty()) {
                 throw new IllegalArgumentException("id is not defined");
-
             }
             int userId = Integer.parseInt(userIdStr);
             UserDaoInter userDao = Context.instanceUserDao();
@@ -40,7 +39,7 @@ public class UserDetailController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         int id = Integer.valueOf(request.getParameter("id"));
         String action = request.getParameter("action");
         System.out.println(action);
@@ -57,6 +56,5 @@ public class UserDetailController extends HttpServlet {
             userDao.removeUser(id);
         }
         response.sendRedirect("users");
-
     }
 }

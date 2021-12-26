@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.dto.UserForm;
+import com.company.dto.UserDto;
 import com.company.entity.User;
 import com.company.security.DummyService;
-import com.company.service.inter.UserServiceInter;
+import com.company.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,11 +21,11 @@ import java.util.List;
 @Slf4j
 public class UserController {
 
-    private final UserServiceInter userServiceInter;
+    private final UserService userService;
     private final DummyService dummyService;
 
-    public UserController(UserServiceInter userServiceInter, DummyService dummyService) {
-        this.userServiceInter = userServiceInter;
+    public UserController(UserService userService, DummyService dummyService) {
+        this.userService = userService;
         this.dummyService = dummyService;
     }
 
@@ -43,7 +43,7 @@ public class UserController {
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "surname", required = false) String surname) {
 
-        List<User> list = userServiceInter.getAll(name, surname, null);
+        List<User> list = userService.getAll(name, surname, null);
         ModelAndView view = new ModelAndView("usersJ");
         view.addObject("list", list);
         return view;
@@ -61,15 +61,13 @@ public class UserController {
     }*/
 
     @GetMapping(value = "/usersm")
-    public ModelAndView index4(@Valid @ModelAttribute("user") UserForm userForm, BindingResult bindingResult) {
+    public ModelAndView index4(@Valid @ModelAttribute("user") UserDto userDto, BindingResult bindingResult) {
         List<User> list = null;
         ModelAndView view = new ModelAndView("users");
-
         if (bindingResult.hasErrors()) {
-            list = userServiceInter.getAll(null, null, null);
+            list = userService.getAll(null, null, null);
         } else
-            list = userServiceInter.getAll(userForm.getName(), userForm.getSurname(), null);
-
+            list = userService.getAll(userDto.getName(), userDto.getSurname(), null);
         view.addObject("list", list);
         return view;
     }
@@ -96,8 +94,8 @@ public class UserController {
     }
 
     @ModelAttribute("user")
-    public UserForm getEmptyForm() {
-        return new UserForm();
+    public UserDto getEmptyForm() {
+        return new UserDto();
     }
 
 }

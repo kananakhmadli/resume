@@ -1,17 +1,16 @@
-package com.company.dao.impl;
+package com.company.repository;
 
 import com.company.entity.Skill;
 import com.company.entity.User;
 import com.company.entity.UserSkill;
-import com.company.dao.inter.AbstractDAO;
-import com.company.dao.inter.UserSkillDaoInter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {//data access object
+public class UserSkillRepository extends abstractDao {
 
     private UserSkill getUserSkill(ResultSet rs) throws Exception {
         int userId = rs.getInt("id");
@@ -21,7 +20,6 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
         return new UserSkill(new User(userId), new Skill(skillId, skillName), power);
     }
 
-    @Override
     public List<UserSkill> getAllSkillByUserId(int userId) {
         List<UserSkill> result = new ArrayList<>();
         try ( Connection c = connect()) {
@@ -44,11 +42,9 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
                 UserSkill u = getUserSkill(rs);
                 result.add(u);
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return result;
     }
-
 }

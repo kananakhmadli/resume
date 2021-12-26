@@ -1,18 +1,20 @@
 package outer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 //@Scope("prototype")
+@Slf4j
 public class MyConfiguration {
 
     @Bean("obj")
     public Object getObject() {
-        System.out.println("My object was created");
+        log.info("My object was created");
         return new Object();
     }
     public MyConfiguration() {
-        System.out.println("My configuration was created");
+        log.info("My configuration was created");
     }
 }

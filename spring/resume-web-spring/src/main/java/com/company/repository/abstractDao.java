@@ -1,14 +1,14 @@
-package com.company.dao.inter;
+package com.company.repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
-public abstract class AbstractDAO {
+public abstract class abstractDao {
 
-    public Connection connect() throws Exception { /// niye static olmadi
+    public Connection connect() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/resume";
         String username = "root";
@@ -21,15 +21,12 @@ public abstract class AbstractDAO {
     public EntityManager em() {
         if (emf == null) {
             emf = Persistence.createEntityManagerFactory("pu");
-
         }
         EntityManager entityManager = emf.createEntityManager();
         return entityManager;
-
     }
 
     public void closeEmf() {
         emf.close();
     }
-
 }

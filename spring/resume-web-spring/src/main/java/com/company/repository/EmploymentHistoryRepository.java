@@ -1,7 +1,5 @@
-package com.company.dao.impl;
+package com.company.repository;
 
-import com.company.dao.inter.AbstractDAO;
-import com.company.dao.inter.EmploymentHistoryDoaInter;
 import com.company.entity.EmploymentHistory;
 import com.company.entity.User;
 
@@ -12,9 +10,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpoymentHistoryDaoImpl extends AbstractDAO implements EmploymentHistoryDoaInter {//data access object
+public class EmploymentHistoryRepository extends abstractDao {
 
-    private EmploymentHistory getEmpolymentHistory(ResultSet rs) throws Exception {
+    private EmploymentHistory getEmploymentHistory(ResultSet rs) throws Exception {
         String header = rs.getString("header");
         String jobDescription = rs.getString("job_description");
         Date beginDate = rs.getDate("begin_date");
@@ -22,10 +20,8 @@ public class EmpoymentHistoryDaoImpl extends AbstractDAO implements EmploymentHi
         int userId = rs.getInt("user_id");
         EmploymentHistory emp = new EmploymentHistory(null,header, beginDate, endDate, jobDescription, new User(userId));
         return emp;
-
     }
 
-    @Override
     public List<EmploymentHistory> getEmploymentHistoryByUserId(int userId) {
         List<EmploymentHistory> result = new ArrayList<>();
         try (Connection c = connect()) {
@@ -35,15 +31,12 @@ public class EmpoymentHistoryDaoImpl extends AbstractDAO implements EmploymentHi
 
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-                EmploymentHistory emp = getEmpolymentHistory(rs);
+                EmploymentHistory emp = getEmploymentHistory(rs);
                 result.add(emp);
-
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return result;
     }
-
 }

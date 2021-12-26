@@ -1,6 +1,6 @@
 package com.company.security;
 
-import com.company.dao.inter.UserRepository;
+import com.company.repository.UserRepository;
 import com.company.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User.UserBuilder;
@@ -30,15 +30,12 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
             builder = org.springframework.security.core.userdetails.User.withUsername(email);
             builder.disabled(false);
             builder.password(user.getPassword());
-
             String[] authorities = new String[user.getGroupUsers().size()];
             for (int i = 0; i < user.getGroupUsers().size(); i++) {
                 authorities[i] = user.getGroupUsers().get(i).getMyGroup().getName();
             }
-
             log.info(Arrays.toString(authorities));
             log.info("++++++++++++++++++++++++++++++++++++++++++++++++");
-
             builder.authorities(authorities);
             return builder.build();
         } else {
