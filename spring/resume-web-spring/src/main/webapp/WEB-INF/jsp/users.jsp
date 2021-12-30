@@ -1,9 +1,10 @@
+<%--suppress ALL --%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -29,23 +30,29 @@
                 <div class="form-group">
                     <label>name</label>
                     <f:input type="text" path="name" class="form-control" placeholder="Enter name"/>
-                    <form:errors path="name"/>
+                    <f:errors path="name"/>
                 </div>
                 <div class="form-group">
                     <label>surname</label>
                     <f:input type="text" path="surname" class="form-control" placeholder="Enter surname"/>
-                    <form:errors path="surname"/>
+                    <f:errors path="surname"/>
+                </div>
+                <div class="form-group">
+                    <label>email</label>
+                    <f:input type="text" path="email" class="form-control" placeholder="Enter email"/>
+                    <f:errors path="email"/>
                 </div>
                 <f:button type="submit" value="Search" class="btn btn-primary">Seacrh</f:button>
             </f:form>
         </div>
     </div>
     <table class="table">
+        <caption>Tabe for Users</caption>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Nationality</th>
+            <th id="name">Name</th>
+            <th id="surname">Surname</th>
+            <th id="email">Email</th>
         </tr>
         </thead>
         <tbody>
@@ -53,7 +60,7 @@
             <tr>
                 <td>${u.name}</td>
                 <td>${u.surname}</td>
-                <td>${u.nationality.name}</td>
+                <td>${u.email}</td>
                 <td>
                     <input type="submit" value="delete" class="btn btn-danger" data-toggle="modal"
                            data-target="#exampleModal" onclick="setIdForDelete(${u.getId()})">
@@ -82,9 +89,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                Are you sure?
-            </div>
+            <div class="modal-body">Are you sure?</div>
             <div class="modal-footer">
                 <form action="userdetail" method="POST">
                     <input type="hidden" name="id" value="" id="idForDelete">

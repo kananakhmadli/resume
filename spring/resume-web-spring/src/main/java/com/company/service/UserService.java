@@ -1,47 +1,77 @@
 package com.company.service;
 
+import com.company.dto.UserDto;
 import com.company.entity.User;
 import com.company.repository.UserRepositoryCustom;
+import com.company.security.DummyService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@Service
+@SuppressWarnings("unused")
+@Slf4j
 @Transactional
+@Service
 public class UserService {
 
-    private final UserRepositoryCustom userRepository;
+    private final UserRepositoryCustom userRepositoryCustom;
+    private final DummyService dummyService;
 
-    public UserService(UserRepositoryCustom userRepository) {
-        this.userRepository = userRepository;
+    public UserService(UserRepositoryCustom userRepositoryCustom, DummyService dummyService) {
+        this.userRepositoryCustom = userRepositoryCustom;
+        this.dummyService = dummyService;
     }
 
-    public List<User> getAll(String name, String surname, Integer nationalityId) {
-        return userRepository.getAll(name, surname, nationalityId);
+    public ModelAndView getAllUser1(String name, String surname, String email) {
+        List<User> list = userRepositoryCustom.getAll(name, surname, email);
+        ModelAndView view = new ModelAndView("usersJ");
+        view.addObject("list", list);
+        try {
+            dummyService.foo();
+        } catch (Exception e) {
+            log.info("Not Login as admin ");
+        }
+        return view;
+
     }
 
-    public boolean updateUser(User u) {
-        return userRepository.updateUser(u);
+    public ModelAndView getAllUserM(UserDto userDto, BindingResult bindingResult) {
+        List<User> list;
+        ModelAndView view = new ModelAndView("users");
+        if (bindingResult.hasErrors()) {
+            list = userRepositoryCustom.getAll(null, null, null);
+        } else
+            list = userRepositoryCustom.getAll(userDto.getName(), userDto.getSurname(), userDto.getEmail());
+        view.addObject("list", list);
+        return view;
     }
 
-    public boolean removeUser(int id) {
-        return userRepository.removeUser(id);
+    public void updateUser(User u) {
+        userRepositoryCustom.updateUser(u);
+    }
+
+    public void removeUser(int id) {
+        userRepositoryCustom.removeUser(id);
     }
 
     public User getById(int userId) {
-        return userRepository.getById(userId);
+        return userRepositoryCustom.getById(userId);
     }
 
-    public boolean addUser(User u) {
-        return userRepository.addUser(u);
+    public void addUser(User u) {
+        userRepositoryCustom.addUser(u);
     }
 
     public User findByEmailAndPassword(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password);
+        return userRepositoryCustom.findByEmailAndPassword(email, password);
     }
 
     public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepositoryCustom.findByEmail(email);
     }
+
 }

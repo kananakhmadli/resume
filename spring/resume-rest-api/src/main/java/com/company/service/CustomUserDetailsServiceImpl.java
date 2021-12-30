@@ -20,7 +20,6 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     UserDaoImpl userDao;
 
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userServiceInter.findByEmail(email);

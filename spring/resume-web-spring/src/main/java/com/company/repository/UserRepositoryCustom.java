@@ -8,13 +8,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 @Repository("userDao1")
-public class UserRepositoryCustom extends abstractDao {
+public class UserRepositoryCustom {
 
     @PersistenceContext
     private EntityManager em;
 
-    public List<User> getAll(String name, String surname, Integer nationalityId) {
+    public List<User> getAll(String name, String surname, String email) {
         String jpql = "select u from User u where 1=1";
 
         if (name != null && !name.trim().isEmpty()) {
@@ -23,8 +24,8 @@ public class UserRepositoryCustom extends abstractDao {
         if (surname != null && !surname.trim().isEmpty()) {
             jpql += " and u.surname like CONCAT(CONCAT('%',:surname),'%')";
         }
-        if (nationalityId != null) {
-            jpql += " and u.nationality_id=:nid ";
+        if (email != null) {
+            jpql += " and u.email like CONCAT(CONCAT('%',:email),'%')";
         }
         Query query = em.createQuery(jpql, User.class);
         if (name != null && !name.trim().isEmpty()) {
@@ -33,50 +34,42 @@ public class UserRepositoryCustom extends abstractDao {
         if (surname != null && !surname.trim().isEmpty()) {
             query.setParameter("surname", surname);
         }
-        if (nationalityId != null) {
-            query.setParameter("nid", nationalityId);
+        if (email != null) {
+            query.setParameter("email", email);
         }
         return query.getResultList();
     }
 
-    public boolean updateUser(User u) {
+    public void updateUser(User u) {
         em.merge(u);
-        return true;
     }
 
-    public boolean removeUser(int id) {
+    public void removeUser(int id) {
         User u = em.find(User.class, id);
         em.remove(u);
-        return true;
     }
 
     public User getById(int userId) {
         return em.find(User.class, userId);
     }
 
-    public boolean addUser(User u) {
+    public void addUser(User u) {
         em.persist(u);
-        return true;
     }
 
-    public User findByEmailAndPassword(String email, String password) {//jpqa
+    public User findByEmailAndPassword(String email, String password) {
         Query q = em.createQuery(" select u from User u where u.email=:e and u.password=:p", User.class);
         q.setParameter("e", email);
         q.setParameter("p", password);
         List<User> list = q.getResultList();
-        if (list.size() == 1) {
-            return list.get(0);
-        }
-        return null;
+        return list.stream().findFirst().orElse(null);
     }
 
     public User findByEmail(String email) {
         Query q = em.createQuery("select u from User u where u.email=:e", User.class);
-        q.setParameter("e", email);//select u from User u where u.email=:e
+        q.setParameter("e", email);
         List<User> list = q.getResultList();
-        if (list.size() == 1) {
-            return list.get(0);
-        }
-        return null;
+        return list.stream().findFirst().orElse(null);
     }
+
 }

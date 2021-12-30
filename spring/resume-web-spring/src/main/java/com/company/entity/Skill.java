@@ -33,18 +33,12 @@ public class Skill implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skill")
     private List<UserSkill> userSkills;
 
-    public Skill(Integer id) {
-        this.id = id;
-    }
-
-    public Skill(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     @Override
     public String toString() {
-        return "com.company.entity.Skill[ id=" + id + " ]";
+        return "Skill{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
 }

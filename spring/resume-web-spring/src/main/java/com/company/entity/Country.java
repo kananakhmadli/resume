@@ -34,19 +34,12 @@ public class Country implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nationality")
     private List<User> userList;
 
-    public Country(Integer id) {
-        this.id = id;
-    }
-
-    public Country(Integer id, String name, String nationality) {
-        this.id = id;
-        this.name = name;
-        this.nationality = nationality;
-    }
-
     @Override
     public String toString() {
-        return "com.company.entity.Country[ id=" + id + " ]";
+        return "Country{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nationality='" + nationality + '\'' +
+                '}';
     }
-
 }

@@ -1,23 +1,43 @@
 package com.company;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.company.entity.User;
+import com.company.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import outer.MyConfiguration;
 
+@SuppressWarnings({"unused", "CommentedOutCode", "FieldCanBeLocal"})
 @SpringBootApplication
 @ComponentScan(basePackages = "outer")
 @ComponentScan(basePackages = "com.company")
-// burda com.company da dedim yoxsa yalnız outer e baxır
+@Slf4j
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-    @Autowired
-    private MyConfiguration myConfiguration;
+    private final MyConfiguration myConfiguration;
+    private final UserService userService;
+
+    public Application(MyConfiguration myConfiguration, UserService userService) {
+        this.myConfiguration = myConfiguration;
+        this.userService = userService;
+    }
+
+    @Bean
+    public CommandLineRunner run() {
+        return args -> {
+            User user = userService.getById(1);
+            log.info(user.getGroupUsers().get(0).getMyGroup().toString());
+//            user.getUserSkills().forEach(userSkill -> System.out.println(userSkill.getSkill().getName()));
+//                System.out.println(skillRepository.getSkillBSkillId(1).getUserSkills());
+        };
+    }
 
 //    @Bean("userDao1")
 //    public UserDaoInter getUserDao(){

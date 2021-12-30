@@ -1,8 +1,9 @@
+<%--suppress ALL --%>
 <%@page import="java.util.List" %>
 <%@page import="com.company.entity.User" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -17,10 +18,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-<%--    <script src="assets/js/users.js"></script>--%>
 </head>
 <body>
-
 <%
     List<User> list = (List<User>) request.getAttribute("list");
 %>
@@ -36,40 +35,50 @@
                     <label>surname</label>
                     <input type="text" name="surname" class="form-control" placeholder="Enter surname">
                 </div>
+                <div class="form-group">
+                    <label>emial</label>
+                    <input type="text" name="email" class="form-control" placeholder="Enter email">
+                </div>
                 <input type="submit" name="search" value="Search" class="btn btn-primary">
             </form>
         </div>
     </div>
 
     <table class="table">
+        <caption>Table for User</caption>
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Nationality</th>
-            </tr>
+        <tr>
+            <th id="name">Name</th>
+            <th id="surname">Surname</th>
+            <th id="email">Email</th>
+        </tr>
         </thead>
         <tbody>
-            <% for (User u : list) { %>
-            <tr>
-                <td><%=u.getName()%></td>
-                <td><%=u.getSurname()%></td>
-                <td><%=u.getNationality().getName()%></td>
-                <td>
-                    <input type="submit" value="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="setIdForDelete(<%=u.getId()%>)">
-                </td>
-                <td>
-                    <form action="userdetail" method="GET">
-                        <input type="hidden" name="id" value="<%=u.getId()%>">
-                        <input type="hidden" name="action" value="update">
-                        <input type="submit" value="update" class="btn btn-secondary">
-                    </form>
-                </td>
-                <td>
-                    <input type="submit" value="info" class="btn btn-info">
-                </td>
-            </tr>
-            <%}%>
+        <% for (User u : list) { %>
+        <tr>
+            <td>
+                <%=u.getName()%>
+            </td>
+            <td>
+                <%=u.getSurname()%>
+            </td>
+            <td>
+                <%=u.getEmail()%>
+            </td>
+            <td>
+                <input type="submit" value="delete" class="btn btn-danger" data-toggle="modal"
+                       data-target="#exampleModal" onclick="setIdForDelete(<%=u.getId()%>)">
+            </td>
+            <td>
+                <form action="userdetail" method="GET">
+                    <input type="hidden" name="id" value="<%=u.getId()%>">
+                    <input type="hidden" name="action" value="update">
+                    <input type="submit" value="update" class="btn btn-secondary">
+                </form>
+            </td>
+            <td><input type="submit" value="info" class="btn btn-info"></td>
+        </tr>
+        <%}%>
         </tbody>
     </table>
 </div>
@@ -84,9 +93,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                Are you sure?
-            </div>
+            <div class="modal-body">Are you sure?</div>
             <div class="modal-footer">
                 <form action="userdetail" method="POST">
                     <input type="hidden" name="id" value="" id="idForDelete">

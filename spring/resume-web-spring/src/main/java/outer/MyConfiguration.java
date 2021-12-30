@@ -17,4 +17,5 @@ public class MyConfiguration {
     public MyConfiguration() {
         log.info("My configuration was created");
     }
+
 }

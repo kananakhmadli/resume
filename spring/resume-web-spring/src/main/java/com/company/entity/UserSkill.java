@@ -35,17 +35,14 @@ public class UserSkill implements Serializable {
     @JoinColumn(name = "skill_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Skill skill;
-    private int power;
-
-    public UserSkill(User user, Skill skill, int power) {
-        this.user = user;
-        this.skill = skill;
-        this.power = power;
-    }
+    private Integer power;
 
     @Override
     public String toString() {
-        return "com.company.entity.UserSkill[ id=" + id + " ]";
+        return "UserSkill{" +
+                "id=" + id +
+                ", power=" + power +
+                '}';
     }
 
 }

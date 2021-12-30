@@ -1,3 +1,4 @@
+/*noinspection CssUnknownTarget*/
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;900&display=swap");
 * {
     padding: 0;
@@ -15,11 +16,11 @@ html {
     height: 100%;
 }
 body {
-    background-color: #282c34;
     color: #abafb5;
     width: 100%;
     height: 100%;
-    background: url("http://picsum.photos/2000/1500") center center no-repeat;
+    /*noinspection HttpUrlsUsage*/
+    background: #282c34 url("http://picsum.photos/2000/1500") no-repeat center center;
     background-size: cover;
     object-fit: cover;
 }

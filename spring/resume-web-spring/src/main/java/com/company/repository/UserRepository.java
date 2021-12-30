@@ -5,12 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+@SuppressWarnings({"unused", "CommentedOutCode"})
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByName(String nm);
-
     User findByNameAndSurname(String nm, String sr);
-
     User findByPhone(String num);
 
 //    @Query(value = "select * from User u where u.email=?1 ", nativeQuery = true)

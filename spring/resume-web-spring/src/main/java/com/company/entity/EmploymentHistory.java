@@ -46,20 +46,15 @@ public class EmploymentHistory implements Serializable {
     @ManyToOne(optional = false)
     private User user;
 
-    public EmploymentHistory(Integer id) {
-        this.id = id;
-    }
-
-    public EmploymentHistory(Integer id, String header, Date beginDate, String jobDescription) {
-        this.id = id;
-        this.header = header;
-        this.beginDate = beginDate;
-        this.jobDescription = jobDescription;
-    }
-
     @Override
     public String toString() {
-        return "com.company.entity.EmploymentHistory[ id=" + id + " ]";
+        return "EmploymentHistory{" +
+                "id=" + id +
+                ", header='" + header + '\'' +
+                ", beginDate=" + beginDate +
+                ", endDate=" + endDate +
+                ", jobDescription='" + jobDescription + '\'' +
+                '}';
     }
 
 }

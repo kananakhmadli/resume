@@ -38,32 +38,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/css/**").permitAll()
-//                .anyRequest().fullyAuthenticated()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/js/**").permitAll() //Adding this line solved it
-//                .anyRequest().fullyAuthenticated()
-                .and()
                 .authorizeRequests().antMatchers("/login**").permitAll()
                 .and()
                 .authorizeRequests().antMatchers("/kanan**").permitAll()
                 .and()
                 .authorizeRequests().antMatchers("/usersm").hasAnyAuthority("USER", "ADMIN")
                 .and()
-                .authorizeRequests().anyRequest().hasAnyAuthority("ADMIN")
-                .and()
-                .formLogin().loginPage("/login")//login olmadıqım bir yere giriş etdikde hara yönlədirsin məni
+                .formLogin().loginPage("/login")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/usersm")
+                .failureUrl("/error")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/login")
                 .permitAll();
 //                .and()
 //                .csrf().disable();
     }
+
 }

@@ -63,4 +63,5 @@ public class UserRestController {
         return ResponseEntity.ok(ResponseDTO.of(userDto, "Successfully added"));
 
     }
+
 }

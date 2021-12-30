@@ -1,7 +1,6 @@
 let btnOpen = document.querySelector("#opne-popup");
 let btnClose = document.querySelector("#close-popup");
 let popup = document.querySelector(".popup");
-
 let popupContainer = document.querySelector(".popup-container");
 
 btnOpen.addEventListener("click", function () {

@@ -36,11 +36,6 @@ public class GroupRole implements Serializable {
     @ManyToOne(optional = false)
     private Role role;
 
-    public GroupRole(MyGroup myGroup, Role role) {
-        this.myGroup = myGroup;
-        this.role = role;
-    }
-
     @Override
     public String toString() {
         return "GroupRole{" +
@@ -49,4 +44,5 @@ public class GroupRole implements Serializable {
                 ", privilege=" + role +
                 '}';
     }
+
 }

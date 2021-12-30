@@ -13,4 +13,5 @@ public class DummyService {
     public void foo() {
         log.info("foo was called in dummy service");
     }
+
 }

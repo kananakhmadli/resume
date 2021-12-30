@@ -1,23 +1,12 @@
 package com.company.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class UserDto {
 
-    @Size(min = 3, message = "not less than 3")
     private String name;
-
-    @NotEmpty
     private String surname;
+    private String email;
 
 }
