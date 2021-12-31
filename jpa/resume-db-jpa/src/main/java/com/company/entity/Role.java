@@ -44,4 +44,5 @@ public class Role implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

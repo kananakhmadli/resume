@@ -17,4 +17,5 @@ public class SkillDaoImpl extends AbstractDAO implements SkillDaoInter {//Countr
         Query query = em.createQuery(jpql, Skill.class);
         return query.getResultList();
     }
+
 }

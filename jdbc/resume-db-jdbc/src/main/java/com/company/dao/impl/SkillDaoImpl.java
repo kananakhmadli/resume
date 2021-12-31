@@ -12,4 +12,5 @@ public class SkillDaoImpl extends AbstractDAO implements SkillDaoInter {
     public List<Skill> getAll() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

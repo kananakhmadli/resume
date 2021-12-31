@@ -84,7 +84,7 @@ public class User implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", profileDesc='" + profileDesc + '\'' +
                 ", nationality=" + nationality +
-                ", groupUsers=" + groupUsers +
                 '}';
     }
+
 }

@@ -5,14 +5,16 @@ import com.company.entity.User;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {// 
+    public static void main(String[] args) {
         UserDaoInter userDao = Context.instanceUserDao();
-//        List<User> userList=userDao.getAll(null,null,null);
-//        out.println(userList.get(0));
+        User user = new User();
+        user.setName("Kanan");
+        user.setEmail("kanan.akhmadli99@gmail.com");
+        user.setPhone("1121321");
+        userDao.addUser(user);
 
-        User u = userDao.findByEmailAndPassword("kanan.akhmadli99@gmail.com", "12345");
+        System.out.println(userDao.getAll(null, null, null));
 
-        System.out.println(u);
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
     }
 

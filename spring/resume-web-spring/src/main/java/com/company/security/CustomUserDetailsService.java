@@ -13,18 +13,18 @@ import java.util.Arrays;
 
 @Service("userDetailsService")
 @Slf4j
-public class CustomUserDetailsServiceImpl implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public CustomUserDetailsServiceImpl(UserRepository userRepository) {
+    public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
-        UserBuilder builder = null;
+        UserBuilder builder;
         log.info(String.valueOf(user));
         if (user != null) {
             builder = org.springframework.security.core.userdetails.User.withUsername(email);

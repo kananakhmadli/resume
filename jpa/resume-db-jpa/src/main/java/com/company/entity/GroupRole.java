@@ -49,4 +49,5 @@ public class GroupRole implements Serializable {
                 ", privilege=" + role +
                 '}';
     }
+
 }

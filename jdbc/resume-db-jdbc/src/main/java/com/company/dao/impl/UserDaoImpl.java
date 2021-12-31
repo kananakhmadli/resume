@@ -156,4 +156,5 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         }
         return result;
     }
+
 }

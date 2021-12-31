@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+@SuppressWarnings("CommentedOutCode")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -37,7 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-
         return new BCryptPasswordEncoder();
     }
 
@@ -45,20 +45,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey(signingKey);
-
         return converter;
     }
 
 //    @Bean
 //    public TokenStore tokenStore() {
-//
 //        return new JdbcTokenStore(defaultDataSource);
 //    }
 
-
     @Bean
     public TokenStore tokenStore() {
-
         return new JwtTokenStore(accessTokenConverter());
     }
 
@@ -71,7 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return defaultTokenServices;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -83,7 +78,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .disable();
-
     }
 
 }

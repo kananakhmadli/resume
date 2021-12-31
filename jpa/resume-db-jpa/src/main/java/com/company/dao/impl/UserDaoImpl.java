@@ -51,14 +51,10 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
     @Override
     public boolean removeUser(int id) {
         EntityManager em = em();
-        User u = em.find(User.class,
-                id);
-        em.getTransaction()
-                .begin();
+        User u = em.find(User.class,id);
+        em.getTransaction().begin();
         em.remove(u);
-
-        em.getTransaction()
-                .commit();
+        em.getTransaction().commit();
         em.close();
         return true;
     }
@@ -66,9 +62,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
     @Override
     public User getById(int userId) {
         EntityManager em = em();
-
-        User u = em.find(User.class,
-                userId);
+        User u = em.find(User.class,userId);
         em.close();
         return u;
     }
@@ -87,13 +81,9 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
     public User findByEmailAndPassword(String email, String password) {//jpqa
         EntityManager em = em();
         Query q = em.createQuery(" select u from User u where u.email=:e and u.password=:p", User.class);
-
         q.setParameter("e", email);
-
         q.setParameter("p", password);
-
         List<User> list = q.getResultList();
-
         if (list.size() == 1) {
             return list.get(0);
         }
@@ -104,14 +94,12 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
     public User findByEmail(String email) {
         EntityManager em = em();
         Query q = em.createQuery("select u from User u where u.email=:e");
-
         q.setParameter("e", email);//select u from User u where u.email=:e
-
         List<User> list = q.getResultList();
-
         if (list.size() == 1) {
             return list.get(0);
         }
         return null;
     }
+
 }

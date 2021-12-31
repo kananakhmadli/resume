@@ -1,7 +1,6 @@
 package com.company.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,9 +12,9 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
-import java.util.Arrays;
+import java.util.List;
 
-
+@SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -39,15 +38,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .withClient("alma")
                 .secret(passwordEncoder.encode("alma"))
                 .authorizedGrantTypes("password")
-                .scopes("read","write")
+                .scopes("read", "write")
                 .resourceIds("resumeapi");
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
-        enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
-
+        enhancerChain.setTokenEnhancers(List.of(accessTokenConverter));
         endpoints
                 .tokenStore(tokenStore)
                 .accessTokenConverter(accessTokenConverter)

@@ -44,4 +44,5 @@ public class MyGroup implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }
