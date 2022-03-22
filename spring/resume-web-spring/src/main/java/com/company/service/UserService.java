@@ -14,8 +14,8 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 @Slf4j
-@Transactional
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepositoryCustom userRepositoryCustom;
@@ -27,8 +27,8 @@ public class UserService {
     }
 
     public ModelAndView getAllUser1(String name, String surname, String email) {
-        List<User> list = userRepositoryCustom.getAll(name, surname, email);
-        ModelAndView view = new ModelAndView("usersJ");
+        var list = userRepositoryCustom.getAll(name, surname, email);
+        var view = new ModelAndView("usersJ");
         view.addObject("list", list);
         try {
             dummyService.foo();
@@ -36,12 +36,11 @@ public class UserService {
             log.info("Not Login as admin ");
         }
         return view;
-
     }
 
     public ModelAndView getAllUserM(UserDto userDto, BindingResult bindingResult) {
         List<User> list;
-        ModelAndView view = new ModelAndView("users");
+        var view = new ModelAndView("users");
         if (bindingResult.hasErrors()) {
             list = userRepositoryCustom.getAll(null, null, null);
         } else

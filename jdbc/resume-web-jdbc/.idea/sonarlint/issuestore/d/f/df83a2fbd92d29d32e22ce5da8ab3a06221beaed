@@ -1,0 +1,13 @@
+
+[
+java:S2130"9Use "Integer.parseInt" for this string-to-int conversion.(“¨ûœşÿÿÿÿ8¨ Ÿß/
+z
+java:S1989"XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(“¨ûœşÿÿÿÿ8¼ Ÿß/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(·Š´8¼ Ÿß/
+]	java:S125"<This block of commented-out lines of code should be removed.(Ã‡¼¸ùÿÿÿÿ8¾ Ÿß/
+u
+java:S1989%"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¤Òß‹ùÿÿÿÿ8¾ Ÿß/
+X
+java:S11171";Rename "userDao" which hides the field declared at line 16.(¸¿ª³8¾ Ÿß/
+o
+java:S1989:"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ÃÊ«I8Ñ Ÿß/

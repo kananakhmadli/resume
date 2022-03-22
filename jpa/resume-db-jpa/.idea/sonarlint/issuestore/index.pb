@@ -1,21 +1,3 @@
 
-g
-7src/main/java/com/company/entity/EmploymentHistory.java,8\6\86f3646e064621788ffef1819246d8d964423d1b
-_
-/src/main/java/com/company/entity/UserSkill.java,9\6\966841af4c058cfd45fd9176819a4fdff054d705
-_
-/src/main/java/com/company/entity/GroupUser.java,5\7\577954b523c3a0b1f7f0c81dcef3cb1830570d2b
-]
--src/main/java/com/company/entity/MyGroup.java,8\f\8fa0ce2a6d9d5614913d339a7f53dbdef8c5695c
-_
-/src/main/java/com/company/entity/GroupRole.java,f\a\fac9563768b8ea4b977548e59a2ec17a33ea597e
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-Z
-*src/main/java/com/company/entity/Role.java,0\b\0be04933010db48362fd60dd9496a870d3b4e9a5
-e
-5src/main/java/com/company/dao/inter/UserDaoInter.java,1\f\1fecf2597c3aa8005060056a98855789711617aa
-S
-#src/main/java/com/company/Main.java,7\1\712f4fa73a4784853800427d971a576302d91a32
-[
-+src/main/java/com/company/entity/Skill.java,f\d\fd711e6df2d9d67322254e92232ffe1a05138b93
+c
+3src/main/java/com/company/dao/impl/UserDaoImpl.java,8\3\837198acd6b2c8568d17237b812a034381d1a443

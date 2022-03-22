@@ -1,0 +1,6 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(«µÐäøÿÿÿÿ
+v
+java:S1488"[Immediately return this expression instead of assigning it to the temporary variable "emp".(Ûþö¸ÿÿÿÿÿ
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ç×ž¿

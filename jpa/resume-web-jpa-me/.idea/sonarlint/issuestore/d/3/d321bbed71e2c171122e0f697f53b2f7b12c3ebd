@@ -1,0 +1,33 @@
+
+T
+java:S2130"9Use "Integer.parseInt" for this string-to-int conversion.(“¨ûœþÿÿÿÿ
+s
+java:S1989"XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(“¨ûœþÿÿÿÿ
+w
+java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(Ä†¢¯
+T
+java:S2130"9Use "Integer.parseInt" for this string-to-int conversion.(“¨ûœþÿÿÿÿ
+s
+java:S1989"XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(“¨ûœþÿÿÿÿ
+w
+java:S1989""aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(¥éÿ…
+|
+java:S1989$"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ê¿Èšüÿÿÿÿ
+T
+java:S2130."9Use "Integer.parseInt" for this string-to-int conversion.(“¨ûœþÿÿÿÿ
+s
+java:S1989."XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(“¨ûœþÿÿÿÿ
+n
+java:S1989>"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¤Òß‹ùÿÿÿÿ
+T
+java:S2130C"9Use "Integer.parseInt" for this string-to-int conversion.(“¨ûœþÿÿÿÿ
+s
+java:S1989C"XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(“¨ûœþÿÿÿÿ
+n
+java:S1989E"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¤Òß‹ùÿÿÿÿ
+n
+java:S1989P"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¤Òß‹ùÿÿÿÿ
+n
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ñú¡ï
+a
+java:S1192>"FDefine a constant instead of duplicating this literal "users" 3 times.(¤Òß‹ùÿÿÿÿ

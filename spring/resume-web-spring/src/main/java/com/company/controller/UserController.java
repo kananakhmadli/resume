@@ -2,6 +2,7 @@ package com.company.controller;
 
 import com.company.dto.UserDto;
 import com.company.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,16 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
-@SuppressWarnings("CommentedOutCode")
-@Controller
 @Slf4j
+@Controller
+@RequiredArgsConstructor
+@SuppressWarnings("CommentedOutCode")
 public class UserController {
 
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping(value = {"/users1", "/users2"})
     public ModelAndView users1(@RequestParam(required = false) String name,

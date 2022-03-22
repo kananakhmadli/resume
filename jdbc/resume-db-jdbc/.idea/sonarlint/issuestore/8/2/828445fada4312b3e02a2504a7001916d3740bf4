@@ -1,0 +1,8 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ÀÍÔ¨øÿÿÿÿ
+V
+java:S1610";Convert the abstract class "AbstractDAO" into an interface.(ëö…şÿÿÿÿ
+E
+java:S2115")Add password protection to this database.(”û"8™—¾ëà/
+n
+java:S1488"YImmediately return this expression instead of assigning it to the temporary variable "c".(”û"

@@ -1,0 +1,15 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ûï§ÿÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şŞ½³şÿÿÿÿ
+e
+java:S2095S"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(°İÓ˜
+e
+java:S2095“"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(£Ûş'
+]
+java:S2095f"GUse try-with-resources or close this "Statement" in a "finally" clause.(—ıµ•
+e
+java:S20957"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(áìÁ’
+]
+java:S2095r"GUse try-with-resources or close this "Statement" in a "finally" clause.(—ıµ•
+k
+java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(±¿–¹ıÿÿÿÿ
